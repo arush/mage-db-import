@@ -1,0 +1,25 @@
+#!/bin/bash
+
+clear
+echo "This is going to take your prod.sql, create a new database and import prod.sql with some tweaks in it."
+echo
+# echo "Unzipping latest prod.sql"
+# tar xvzf ../prod.sql
+
+mysql -uroot -p < scripts/createdb.sql
+echo "New database created..."
+echo
+echo "Importing prod.sql..."
+# change "dbname" to your db name you chose in createdb.sql
+mysql -uroot -p dbname < ../prod.sql
+echo "Prod database imported."
+echo
+echo "Begin dev tweaks..."
+echo
+# change "dbname" to your db name you chose in createdb.sql
+mysql -uroot -p dbname < scripts/live-to-dev.sql
+echo "Dumping magento cache..."
+echo
+# change ##magento## to the name of your magento dir
+rm -rf ../##magento##/var/cache/*
+echo "Done. You may visit your dev site now."
