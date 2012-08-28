@@ -1,4 +1,15 @@
 -- --------------------------
+--       DISABLE CACHE     --
+-- --------------------------
+update core_cache_option set value = 0;
+
+-- --------------------------
+--     HIDE FROM ROBOTS    --
+-- --------------------------
+update core_config_data set value = 'NOINDEX,NOFOLLOW' where path like '%default_robots%';
+
+
+-- --------------------------
 --         EMAILS         --
 -- --------------------------
 
