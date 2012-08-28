@@ -42,6 +42,8 @@ It will ask you your myqsql password three times, and in a few seconds, you'll b
 
 
 ##### Basic things #####
+* disables cache
+* hides site from robots (noindex,nofollow)
 * changes Magento URLs
 * changes Magento cookie domain
 * changes all customer emails so you don't accidentally email them
